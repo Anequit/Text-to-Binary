@@ -36,27 +36,38 @@
             <TextBlock DockPanel.Dock="Top"
                        Text="Output"
                        Margin="0 0 0 4"/>
+            
+            <Button Content="Copy Binary"
+                    DockPanel.Dock="Bottom"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"/>
+            
             <Border DockPanel.Dock="Bottom"
                     BorderBrush="{DynamicResource TextControlBorderBrush}"
                     BorderThickness="1"
+                    Margin="0 0 0 4"
                     CornerRadius="3">
-                <ScrollViewer VerticalScrollBarVisibility="Visible">
+                <ScrollViewer VerticalScrollBarVisibility="Visible"
+                              HorizontalScrollBarVisibility="Auto">
                     <ItemsControl ItemsSource="{Binding Words}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
-                                <StackPanel />
+                                <StackPanel Spacing="4"/>
                             </ItemsPanelTemplate>
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
                                 <DockPanel Margin="4">
                                     <TextBlock DockPanel.Dock="Top"
-                                               Text="{Binding Text}"
-                                               HorizontalAlignment="Left"/>
+                                               Text="{Binding .}"
+                                               HorizontalAlignment="Left"
+                                               Margin="0 0 0 4"/>
                                     
-                                    <TextBlock DockPanel.Dock="Bottom"
-                                               Text="{Binding Text, Converter={StaticResource BinaryConverter}}"
-                                               TextWrapping="Wrap"/>
+                                    <TextBox DockPanel.Dock="Bottom"
+                                               Text="{Binding ., Converter={StaticResource BinaryConverter}}"
+                                               TextWrapping="NoWrap"
+                                               IsReadOnly="True"
+                                               MaxLines="1"/>
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
