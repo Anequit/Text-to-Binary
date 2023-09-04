@@ -1,0 +1,68 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:TextToBinary.Avalonia.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="324" d:DesignHeight="348"
+        x:Class="TextToBinary.Avalonia.Views.MainWindow"
+        x:DataType="vm:MainWindowViewModel"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Text to Binary Converter"
+        Width="324" Height="348"
+        MinWidth="264" MinHeight="192">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    
+    <Grid Margin="12"
+          RowDefinitions="Auto, *">
+        <StackPanel Grid.Row="0"
+                    Margin="0 0 0 12"
+                    Spacing="4">
+            <TextBlock Text="Input"/>
+            <TextBox MaxLines="1" 
+                     Watermark="Type inside me"
+                     Text="{Binding Input}"/>
+            <Button Content="Convert"
+                    HorizontalAlignment="Stretch"
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding ConvertCommand}"/>
+        </StackPanel>
+        
+        <DockPanel Grid.Row="1">
+            <TextBlock DockPanel.Dock="Top"
+                       Text="Output"
+                       Margin="0 0 0 4"/>
+            <Border DockPanel.Dock="Bottom"
+                    BorderBrush="{DynamicResource TextControlBorderBrush}"
+                    BorderThickness="1"
+                    CornerRadius="3">
+                <ScrollViewer VerticalScrollBarVisibility="Visible">
+                    <ItemsControl ItemsSource="{Binding Words}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel />
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <DockPanel Margin="4">
+                                    <TextBlock DockPanel.Dock="Top"
+                                               Text="{Binding Text}"
+                                               HorizontalAlignment="Left"/>
+                                    
+                                    <TextBlock DockPanel.Dock="Bottom"
+                                               Text="{Binding Text, Converter={StaticResource BinaryConverter}}"
+                                               TextWrapping="Wrap"/>
+                                </DockPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Border>
+        </DockPanel>
+    </Grid>
+</Window>
