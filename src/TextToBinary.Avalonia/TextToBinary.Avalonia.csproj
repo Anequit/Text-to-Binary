@@ -6,7 +6,7 @@
     <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
-    <RootNamespace>New_folder</RootNamespace>
+    <RootNamespace>TextToBinary.Avalonia</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
