@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F72F15E4-574B-4AB3-A281-0E3F1F757503}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToBinary.Avalonia", "src\New Folder\TextToBinary.Avalonia.csproj", "{576F0966-A89D-4F8D-8C0D-3615899F6BFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextToBinary.Avalonia", "src\TextToBinary.Avalonia\TextToBinary.Avalonia.csproj", "{576F0966-A89D-4F8D-8C0D-3615899F6BFA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
