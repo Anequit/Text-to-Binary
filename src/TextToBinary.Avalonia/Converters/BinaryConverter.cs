@@ -11,7 +11,7 @@ public class BinaryConverter : IValueConverter
 {
     public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        if(value is string text && targetType.IsAssignableTo(typeof(string)))
+        if (value is string text && targetType.IsAssignableTo(typeof(string)))
             return string.Join(' ', Encoding.UTF8.GetBytes(text).Select(b => System.Convert.ToString(b, 2).PadLeft(8, '0')));
 
         return new BindingNotification(new InvalidCastException(), BindingErrorType.Error);

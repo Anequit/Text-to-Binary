@@ -9,7 +9,7 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="Text to Binary Converter"
         Width="324" Height="348"
-        MinWidth="264" MinHeight="192">
+        MinWidth="264" MinHeight="220">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -40,15 +40,15 @@
             <Button Content="Copy Binary"
                     DockPanel.Dock="Bottom"
                     HorizontalAlignment="Stretch"
-                    HorizontalContentAlignment="Center"/>
+                    HorizontalContentAlignment="Center"
+                    Command="{Binding CopyBinaryCommand}"/>
             
             <Border DockPanel.Dock="Bottom"
                     BorderBrush="{DynamicResource TextControlBorderBrush}"
                     BorderThickness="1"
                     Margin="0 0 0 4"
                     CornerRadius="3">
-                <ScrollViewer VerticalScrollBarVisibility="Visible"
-                              HorizontalScrollBarVisibility="Auto">
+                <ScrollViewer VerticalScrollBarVisibility="Visible">
                     <ItemsControl ItemsSource="{Binding Words}">
                         <ItemsControl.ItemsPanel>
                             <ItemsPanelTemplate>
@@ -61,13 +61,12 @@
                                     <TextBlock DockPanel.Dock="Top"
                                                Text="{Binding .}"
                                                HorizontalAlignment="Left"
-                                               Margin="0 0 0 4"/>
+                                               Margin="0 0 0 4"
+                                               TextWrapping="Wrap"/>
                                     
-                                    <TextBox DockPanel.Dock="Bottom"
-                                               Text="{Binding ., Converter={StaticResource BinaryConverter}}"
-                                               TextWrapping="NoWrap"
-                                               IsReadOnly="True"
-                                               MaxLines="1"/>
+                                    <TextBox Text="{Binding ., Converter={StaticResource BinaryConverter}}"
+                                             TextWrapping="Wrap"
+                                             IsReadOnly="True"/>
                                 </DockPanel>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
